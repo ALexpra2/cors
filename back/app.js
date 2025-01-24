@@ -10,10 +10,11 @@ Reemplaza :name con el nombre del personaje que deseas buscar. Por ejemplo, http
 
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
+// traigo cors para poder requerir el l alinformacion del bck desde el front
+
 const app = express();
 const PORT = 3000;
-
-const cors = require('cors');
 
 app.use(cors());
 
@@ -40,7 +41,8 @@ app.get('/character', async (req, res) => {
                 };
             });
 
-            allCharacter.push(...characterFilters);
+            allCharacter.push(...characterFilters); // PAso cada elemento individualmente con ... poruqe sin o estoy haciendo un array de arrays
+            
         }
 
         res.json(allCharacter);
